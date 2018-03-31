@@ -66,16 +66,18 @@ function notifyZoneSet() {
       },
     });
 
-  notifyZoneActivated = true;
-
   /* Disable lock */
   notifyZone.setOptions({draggable: true, editable: true});
 
-  /* Add timer for the checker */
-  window.setInterval(notifyZoneChecker, 1000);
+  if (notifyZoneActivated === false) {
+    /* Add timer for the checker */
+    window.setInterval(notifyZoneChecker, 1000);
 
-  /* Add timer for the remover */
-  window.setInterval(notifyZoneRemover, 10000);
+    /* Add timer for the remover */
+    window.setInterval(notifyZoneRemover, 10000);
+
+    notifyZoneActivated = true;
+  };
 }
 
 function notifyZoneLockToggle() {
